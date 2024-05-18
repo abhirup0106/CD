@@ -1,0 +1,15 @@
+%{#include<stdio.h>
+%}
+%%
+[a-zA-Z0-9]*b{2}[a-zA-Z0-9]* {printf("\nValid String");}
+[a-zA-Z0-9]* {printf("\nInvalid String");}
+%%
+void main()
+{
+printf("\nEnter a String:");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
