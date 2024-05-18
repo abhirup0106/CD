@@ -1,0 +1,36 @@
+%{#include<stdio.h>
+#include<string.h>
+int i=0,j=0,k,flag=0;
+char id[10][10], op[10][10];
+%}
+%%
+[a-zA-Z0-9]+ {flag++; strcpy(id[i],yytext); i++;}
+"+"|"-"|"*"|"/" {flag--; strcpy(op[j],yytext); j++;}
+.|\n {return 0;}
+%%
+void main()
+{
+printf("\nEnter the Input:");
+yylex();
+if(flag!=1)
+{
+printf("\nInvalid");
+}
+else
+{
+printf("\nOperators are:");
+for(k=0;k<j;k++)
+{
+printf("%s\n",op[k]);
+}
+printf("\nIdentifiers are:");
+for(k=0;k<i;k++)
+{
+printf("%s\n",id[k]);
+}
+}
+}
+int yywrap()
+{
+return 1;
+}
