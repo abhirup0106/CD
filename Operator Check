@@ -1,0 +1,33 @@
+%{
+#include<stdio.h>
+%}
+%%
+"-" {printf("\nArithmetic Operator");} 
+"+" {printf("\nArithmetic Operator");}
+"*" {printf("\nArithmetic Operator");} 
+"/" {printf("\nArithmetic Operator");}
+"==" {printf("\nRelational Operator");} 
+"<=" {printf("\nRelational Operator");} 
+">=" {printf("\nRelational Operator");} 
+"!=" {printf("\nRelational Operator");} 
+"=" {printf("\nAssignment Operator");}
+"%" {printf("\nModulus Operator");}
+"&&" {printf("\nLogical Operator");} 
+"||" {printf("\nLogical Operator");}
+"++" {printf("\nIncrement Operator");}
+"--" {printf("\nDecrement Operator");}
+[0-9]+ {printf("\nIntegers");}
+[0-9]+"."[0-9]+ {printf("\nDecimal");}
+[a-zA-Z]+ {printf("\nAlphabet");}
+[a-zA-Z0-9]+ {printf("\nAlphanumeric");}
+. {printf("\nOther Than Operator");}
+%%
+void main()
+{
+printf("\nEnter the operator:");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
