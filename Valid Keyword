@@ -1,0 +1,16 @@
+%{#include<stdio.h>
+%}
+%%
+if|else|do|while|switch|for|void|main|break|continue {printf("\nValid Keyword");}
+[0-9]+ {printf("\nIt is a Number");}
+.; {printf("\nOther than Keyword");} 
+%%
+void main()
+{
+printf("\nEnter Input:");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
