@@ -1,0 +1,26 @@
+%{#include<stdio.h>
+int num,r,b=0,p=1;
+%}
+%%
+[0-9]+ {num=atoi(yytext);
+while(num>0)
+{
+r=num%2;
+b+=r*p;
+p*=10;
+num=num/2;
+}
+printf("\nThe Binary Number is %d",b);
+}
+[a-zA-Z]+ {printf("\nIt is an Alphabet");}
+.; {printf("\nIt is neither an Alphabet nor a Number");}
+%%
+void main()
+{
+printf("\nEnter a Number");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
