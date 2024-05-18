@@ -1,0 +1,18 @@
+%{#include<stdio.h>
+int c=0;
+%}
+%%
+if|else|continue|break|for|do|while|break|switch|void|main|case {c++;}
+[0-9]+ {printf("\nIt is a Number");}
+.; {printf("\n Other than Keyword");}
+"\n" {printf("\nNumber of Keywords: %d",c);}
+%%
+void main()
+{
+printf("\nEnter Input:");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
