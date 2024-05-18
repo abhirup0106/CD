@@ -1,0 +1,20 @@
+%{#include<stdio.h>
+int flag=0;
+%}
+%%
+[aeiouAeiou].[a-zA-Z0-9]+ {flag=1;}
+. {printf("\nNot starting with vowel");}
+%%
+void main()
+{
+printf("\nEnter a String:");
+yylex();
+if(flag==1)
+{
+printf("\nStarting with vowel");
+}
+}
+int yywrap()
+{
+return 1;
+}
