@@ -1,0 +1,43 @@
+LEX FILE
+%{
+#include "y.tab.h"
+%}
+%%
+[a-zA-Z][a-zA-Z_0-9]* return letter;
+[0-9] return digit;
+. return yytext[0];
+\n return 0;
+%%
+int yywrap()
+{
+return 1;
+}
+
+YACC FILE
+%{
+#include<stdio.h>
+int valid=1;
+%}
+%token digit letter
+%%
+start: letter S
+S: letter S
+| digit S
+|
+;
+%%
+int yyerror()
+{
+printf("\nIts not An Identifier");
+valid=0;
+return 0;
+}
+void main()
+{
+printf("\nEnter a name to be tested for Identifier:");
+yyparse();
+if(valid)
+{
+printf("\nIt is an Identifier!\n");
+}
+}
